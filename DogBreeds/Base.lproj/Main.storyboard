@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TbB-qB-HQc">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Fe0-rn-X6B">
+            <objects>
+                <navigationController id="TbB-qB-HQc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XFm-so-okW">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TSB-nZ-CnS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wlX-pH-Z1h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-775" y="86"/>
+        </scene>
+        <!--Dog Breeds List View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="DogBreedsListViewController" customModule="DogBreeds" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="w53-1r-ApX">
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="5sf-7b-ntB"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="89S-sH-P66">
+                                <rect key="frame" x="0.0" y="139" width="414" height="723"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="w53-1r-ApX" secondAttribute="trailing" id="6Fe-Mv-zBV"/>
+                            <constraint firstItem="w53-1r-ApX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6eS-xI-MZ7"/>
+                            <constraint firstItem="89S-sH-P66" firstAttribute="top" secondItem="w53-1r-ApX" secondAttribute="bottom" id="CMC-7o-CxK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="w53-1r-ApX" secondAttribute="top" id="Kml-Eo-uX9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="89S-sH-P66" secondAttribute="trailing" id="Qww-8w-hFh"/>
+                            <constraint firstItem="89S-sH-P66" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oei-ep-1ia"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="89S-sH-P66" secondAttribute="bottom" id="wJq-b3-gVz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ALi-cF-jNC"/>
+                    <connections>
+                        <outlet property="searchBar" destination="w53-1r-ApX" id="BxC-sX-vd0"/>
+                        <outlet property="tableView" destination="89S-sH-P66" id="yQr-0t-C2h"/>
+                        <segue destination="hxX-cd-TNi" kind="show" identifier="ShowSubBreeds" destinationCreationSelector="ShowSubBreeds" id="8ha-fi-pfv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.739130434782609" y="85.714285714285708"/>
+        </scene>
+        <!--Dog Sub Breeds View Controller-->
+        <scene sceneID="3Tb-Pl-2l7">
+            <objects>
+                <viewController id="hxX-cd-TNi" customClass="DogSubBreedsViewController" customModule="DogBreeds" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xGN-6J-JpJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="27G-Md-UDE">
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="U4h-Bd-sh1">
+                                <rect key="frame" x="0.0" y="139" width="414" height="723"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Oog-ue-nez"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Oog-ue-nez" firstAttribute="bottom" secondItem="U4h-Bd-sh1" secondAttribute="bottom" id="2je-ep-Nez"/>
+                            <constraint firstItem="U4h-Bd-sh1" firstAttribute="leading" secondItem="Oog-ue-nez" secondAttribute="leading" id="9p8-45-0xb"/>
+                            <constraint firstItem="27G-Md-UDE" firstAttribute="top" secondItem="Oog-ue-nez" secondAttribute="top" id="9qY-S8-XSW"/>
+                            <constraint firstItem="Oog-ue-nez" firstAttribute="trailing" secondItem="U4h-Bd-sh1" secondAttribute="trailing" id="AU1-Gd-Tv0"/>
+                            <constraint firstItem="Oog-ue-nez" firstAttribute="trailing" secondItem="27G-Md-UDE" secondAttribute="trailing" id="WeL-de-LTE"/>
+                            <constraint firstItem="U4h-Bd-sh1" firstAttribute="top" secondItem="27G-Md-UDE" secondAttribute="bottom" id="Zjj-Ad-UNf"/>
+                            <constraint firstItem="27G-Md-UDE" firstAttribute="leading" secondItem="Oog-ue-nez" secondAttribute="leading" id="jVX-iJ-0ca"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="tzJ-ZR-EcH"/>
+                    <connections>
+                        <outlet property="searchBar" destination="27G-Md-UDE" id="xq8-Ku-tWC"/>
+                        <outlet property="tableView" destination="U4h-Bd-sh1" id="Zjm-mH-jqH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dhZ-e2-6sU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="86"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
