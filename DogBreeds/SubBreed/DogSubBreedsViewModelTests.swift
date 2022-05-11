@@ -30,7 +30,7 @@ final class DogSubBreedsViewModelTests: XCTestCase {
     func testGetImagesSuccess() {
         var bindSubBreedsViewModelToControllerCallCount = 0
 
-        webService.resultForGetBreedsList = .success(.makeStub())
+        webService.resultForRandomImageForSubBreed = .success(UIImage(named: "DefaultDogImage")!)
         viewModel.bindSubBreedsViewModelToController = {
             bindSubBreedsViewModelToControllerCallCount += 1
         }
@@ -39,7 +39,22 @@ final class DogSubBreedsViewModelTests: XCTestCase {
 
         XCTAssertEqual(bindSubBreedsViewModelToControllerCallCount, 1)
         XCTAssertEqual(viewModel.filteredData.count, 1)
-        XCTAssertEqual(webService.getBreedsListCallCount, 1)
+        XCTAssertEqual(webService.getRandomImageForBreedAndSubBreedCallCount, 1)
+    }
+
+    func testGetImagesFailure() {
+        var bindSubBreedsViewModelToControllerCallCount = 0
+
+        webService.resultForRandomImageForSubBreed = .failure(DogBreedsWebServiceError.generalError)
+        viewModel.bindSubBreedsViewModelToController = {
+            bindSubBreedsViewModelToControllerCallCount += 1
+        }
+
+        viewModel.getImages()
+
+        XCTAssertEqual(bindSubBreedsViewModelToControllerCallCount, 1)
+        XCTAssertEqual(viewModel.filteredData.count, 1)
+        XCTAssertEqual(webService.getRandomImageForBreedAndSubBreedCallCount, 1)
     }
 
     // MARK: - Mocks
@@ -67,16 +82,13 @@ final class DogSubBreedsViewModelTests: XCTestCase {
 
         private(set) var getRandomImageForBreedAndSubBreedCallCount = 0
         var getRandomImageForBreedAndSubBreedHandler: ((String, String) -> Void)?
+        var resultForRandomImageForSubBreed: (Result<UIImage, Error>)?
         func getRandomImageFor(_ breed: String, subBreed: String, completion: @escaping DogRandomImageForBreedCompletion) {
             getRandomImageForBreedAndSubBreedCallCount += 1
             getRandomImageForBreedAndSubBreedHandler?(breed, subBreed)
+            if let result = resultForRandomImageForSubBreed {
+                completion(result)
+            }
         }
-    }
-}
-
-private extension DogBreedsListResponseData {
-    static func makeStub(message: [String: [String]] = ["Breed": ["SomeSubBreed"]]) -> DogBreedsListResponseData {
-        DogBreedsListResponseData(message: message,
-                                  status: "success")
     }
 }

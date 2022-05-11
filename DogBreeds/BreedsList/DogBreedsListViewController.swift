@@ -11,7 +11,6 @@ final class DogBreedsListViewController: UIViewController {
     enum Constants {
         static let segueName = "ShowSubBreeds"
         static let cellHeight = 130.0
-        static let cellImageSize = CGSize(width: 100, height: 80)
     }
 
     private let viewModel = DogBreedsListViewModel(webService: DogBreedsWebService())
@@ -101,7 +100,6 @@ extension DogBreedsListViewController: UITableViewDataSource, UITableViewDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         content.image = viewModel.getBreedDataAt(indexPath.row).image
-        content.imageProperties.maximumSize = Constants.cellImageSize
 
         let assembledText = viewModel.getBreedDataAt(indexPath.row).breed
             + " - "
@@ -110,13 +108,17 @@ extension DogBreedsListViewController: UITableViewDataSource, UITableViewDelegat
         cell.contentConfiguration = content
         cell.selectionStyle = .none
 
-return cell
+        return cell
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         viewModel.willDisplayAt(indexPath.row)
     }
 
+    //	A coordinator pattern or router pattern
+    //	could be applied for better navigation
+    //	but due to limited task scope and time
+    //	segues are used
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedBreedIndex = indexPath.row
         let info = viewModel.getSelectedBreedDataAt(indexPath.row)

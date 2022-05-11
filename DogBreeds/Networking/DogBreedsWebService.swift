@@ -31,6 +31,9 @@ final class DogBreedsWebService: DogBreedsWebServiceProtocol {
     }
 
     func getBreedsList(completion: @escaping DogBreedsListsCompletion) {
+        //	The list with breeds and theirs sub-breeds is fetched
+        //	So the sub-breeds are utilised from here
+        //	and `https://dog.ceo/api/breed/%@/list` is not used for this task
         AF.request(Constants.listURL)
             .response { response in
                 let jsonDecoder = JSONDecoder()

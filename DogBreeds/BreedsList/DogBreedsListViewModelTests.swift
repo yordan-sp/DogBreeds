@@ -41,7 +41,7 @@ final class DogBreedsListViewModelTests: XCTestCase {
 
         viewModel.loadBreeds()
 
-        XCTAssertEqual(bindBreedsListToControllerCallCount, 1)
+        XCTAssertEqual(bindBreedsListToControllerCallCount, 0)
         XCTAssertEqual(viewModel.filteredData.count, 0)
         XCTAssertEqual(webService.getBreedsListCallCount, 1)
     }
@@ -134,7 +134,7 @@ final class DogBreedsListViewModelTests: XCTestCase {
 
         viewModel.willDisplayAt(0)
 
-        XCTAssertEqual(bindBreedsListToControllerCallCount, 2)
+        XCTAssertEqual(bindBreedsListToControllerCallCount, 1)
         XCTAssertEqual(bindBreedImageChangeToControllerCallCount, 1)
         XCTAssertEqual(viewModel.filteredData.count, 1)
         XCTAssertEqual(webService.getBreedsListCallCount, 1)
@@ -164,7 +164,7 @@ final class DogBreedsListViewModelTests: XCTestCase {
 
         viewModel.willDisplayAt(0)
 
-        XCTAssertEqual(bindBreedsListToControllerCallCount, 2)
+        XCTAssertEqual(bindBreedsListToControllerCallCount, 1)
         XCTAssertEqual(bindBreedImageChangeToControllerCallCount, 1)
         XCTAssertEqual(viewModel.filteredData.count, 1)
         XCTAssertEqual(webService.getBreedsListCallCount, 1)

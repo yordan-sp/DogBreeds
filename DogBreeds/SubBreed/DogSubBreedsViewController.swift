@@ -11,7 +11,6 @@ final class DogSubBreedsViewController: UIViewController {
     enum Constants {
         static let cellID = "cell"
         static let cellHeight = 130.0
-        static let cellImageSize = CGSize(width: 100, height: 100)
     }
 
     var viewModel: DogSubBreedsViewModel?
@@ -80,7 +79,6 @@ extension DogSubBreedsViewController: UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellID, for: indexPath)
         var content = cell.defaultContentConfiguration()
         content.image = models[indexPath.row].getImage()
-        content.imageProperties.maximumSize = Constants.cellImageSize
         content.text = models[indexPath.row].subBreed
         cell.contentConfiguration = content
 

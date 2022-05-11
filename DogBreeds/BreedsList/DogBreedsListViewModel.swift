@@ -48,7 +48,6 @@ final class DogBreedsListViewModel {
 
     private(set) var filteredData: [DogBreedsListModel] = [] {
         didSet {
-            
             if filteredData.count != oldValue.count {
                 bindBreedsListToController()
             } else {
@@ -99,8 +98,8 @@ final class DogBreedsListViewModel {
     }
 
     func getSelectedBreedDataAt(_ index: Int) -> (breed: String, subBreeds: [String])? {
-        if index < data.count {
-            return (data[index].breed, data[index].subBreeds)
+        if index < filteredData.count {
+            return (filteredData[index].breed, filteredData[index].subBreeds)
         } else {
             return nil
         }
